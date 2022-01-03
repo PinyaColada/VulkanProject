@@ -29,6 +29,8 @@ namespace lve {
 
 			~LvePipeline();
 
+			void bind(VkCommandBuffer commandBuffer);
+
 			static pipelineConfigInfo defaultPipelineConfigInfo(uint32_t width, uint32_t height);
 
 		private:

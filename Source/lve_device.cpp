@@ -49,7 +49,7 @@ void DestroyDebugUtilsMessengerEXT(
 // class member functions
 LveDevice::LveDevice(LveWindow &window) : window{window} {
   createInstance();
-  setupDebugMessenger();
+  //setupDebugMessenger();
   createSurface();
   pickPhysicalDevice();
   createLogicalDevice();
