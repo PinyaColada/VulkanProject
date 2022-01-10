@@ -37,7 +37,7 @@ namespace lve {
 		pipelineLayoutInfo.pPushConstantRanges = nullptr;
 
 		if (vkCreatePipelineLayout(lveDevice.device(), &pipelineLayoutInfo, nullptr, &pipelineLayout) != VK_SUCCESS)
-			throw std::exception("Failed to create pipeline layout.");
+			throw std::runtime_error("Failed to create pipeline layout.");
 	}
 
 	void Application::createPipeline()

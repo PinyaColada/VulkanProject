@@ -14,8 +14,8 @@ namespace lve {
 			static const int WIDTH = 800;
 			static const int HEIGHT = 800;
 			const std::string NAME = "Vulkan test";
-			const std::string vertFilepath = "Shaders/base_shader.vert.spv";
-			const std::string fragFilepath = "Shaders/base_shader.frag.spv";
+			const std::string vertFilepath = "Shaders/vert.spv";
+			const std::string fragFilepath = "Shaders/frag.spv";
 
 			Application();
 			~Application();
