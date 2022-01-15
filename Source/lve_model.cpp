@@ -54,11 +54,18 @@ namespace lve {
 
     std::vector<VkVertexInputAttributeDescription> LveModel::Vertex::getAttributeDescriptions() {
         // This is to especify the parameters of the description and then use it in the pipeline creation
-        std::vector<VkVertexInputAttributeDescription> attributeDescriptions(1);
-        attributeDescriptions[0].binding = 0;
+        std::vector<VkVertexInputAttributeDescription> attributeDescriptions(2); // The vertex has 2 attributes
+        // The first one is the position (vec3)
+        attributeDescriptions[0].binding = 0; 
         attributeDescriptions[0].location = 0;
         attributeDescriptions[0].format = VK_FORMAT_R32G32_SFLOAT;
-        attributeDescriptions[0].offset = 0;
+        attributeDescriptions[0].offset = offsetof(Vertex, position);
+        // The first one is the color (vec3)
+        attributeDescriptions[1].binding = 0;
+        attributeDescriptions[1].location = 1;
+        attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
+        attributeDescriptions[1].offset = offsetof(Vertex, color);
+
         return attributeDescriptions;
     }
 }

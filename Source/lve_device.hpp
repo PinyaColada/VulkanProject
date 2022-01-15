@@ -35,7 +35,7 @@ class LveDevice {
 
   // Not copyable or movable
   LveDevice(const LveDevice&) = delete;
-  void operator=(const LveDevice&) = delete;
+  LveDevice &operator=(const LveDevice &) = delete;
   LveDevice(LveDevice&&) = delete;
   LveDevice&operator=(LveDevice&&) = delete;
 
@@ -95,6 +95,7 @@ class LveDevice {
   VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
   LveWindow &window;
   VkCommandPool commandPool;
+  int selectedGPU = 1;
 
   VkDevice device_;
   VkSurfaceKHR surface_;

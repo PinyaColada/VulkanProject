@@ -113,15 +113,21 @@ void LveDevice::pickPhysicalDevice() {
   vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
   if (deviceCount == 0) {
     throw std::runtime_error("failed to find GPUs with Vulkan support!");
-  }
+  } 
   std::cout << "Device count: " << deviceCount << std::endl;
   std::vector<VkPhysicalDevice> devices(deviceCount);
   vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
 
-  for (const auto &device : devices) {
-    if (isDeviceSuitable(device)) {
-      physicalDevice = device;
-      break;
+  for (int i = 0; i < devices.size(); i++){
+    VkPhysicalDevice& device = devices[i];
+    if (i == selectedGPU) {
+      if (isDeviceSuitable(device)){
+        physicalDevice = device;
+        break;
+      }
+      else {
+        throw std::runtime_error("Selected GPU is not suitable GPU!");
+      }
     }
   }
 
@@ -130,7 +136,8 @@ void LveDevice::pickPhysicalDevice() {
   }
 
   vkGetPhysicalDeviceProperties(physicalDevice, &properties);
-  std::cout << "physical device: " << properties.deviceName << std::endl;
+  std::cout << "The selected GPU is the number: " << selectedGPU + 1 << std::endl;
+  std::cout << "Physical device: " << properties.deviceName << std::endl;
 }
 
 void LveDevice::createLogicalDevice() {

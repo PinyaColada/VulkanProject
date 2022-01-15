@@ -29,11 +29,14 @@ namespace lve {
 			void createPipeline();
 			void createCommandBuffers();
 			void drawFrame();
+			void freeCommandBuffers();
 			void loadModels();
+			void recreateSwapChain();
+ 			void recordCommandBuffer(int imageIndex);
 
 			LveWindow lveWindow{ WIDTH, HEIGHT, NAME };
 			LveDevice lveDevice{ lveWindow };
-			LveSwapChain lveSwapChain{ lveDevice, lveWindow.getExtent() };
+			std::unique_ptr<LveSwapChain> lveSwapChain;
 
 			std::unique_ptr<LvePipeline> lvePipeline;
 			std::unique_ptr<LveModel> lveModel;
