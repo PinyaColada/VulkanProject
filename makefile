@@ -1,5 +1,6 @@
-CFLAGS = -std=c++17 -O2
-LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
+CFLAGS = -std=c++17 -O3
+
+LDFLAGS = -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi --static
 
 Vulkan: Source/*.cpp Source/*.hpp
 	g++ $(CFLAGS) -o Vulkan Source/*.cpp $(LDFLAGS)
